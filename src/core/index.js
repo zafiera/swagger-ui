@@ -131,6 +131,9 @@ module.exports = function SwaggerUI(opts) {
   var system = store.getSystem()
 
   const downloadSpec = (fetchedConfig) => {
+      if(typeof constructorConfig !== "object") {
+        return system
+      }
     let localConfig = system.specSelectors.getLocalConfig ? system.specSelectors.getLocalConfig() : {}
     let mergedConfig = deepExtend({}, localConfig, constructorConfig, fetchedConfig || {}, queryConfig)
 
@@ -140,7 +143,10 @@ module.exports = function SwaggerUI(opts) {
     }
 
     store.setConfigs(mergedConfig)
-    system.configsActions.loaded()
+
+    if(system.configsActions) {
+      system.configsActions.loaded()
+    }
 
     if (fetchedConfig !== null) {
       if (!queryConfig.url && typeof mergedConfig.spec === "object" && Object.keys(mergedConfig.spec).length) {
