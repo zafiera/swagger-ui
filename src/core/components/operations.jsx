@@ -63,6 +63,7 @@ export default class Operations extends React.Component {
               return (
                 <OperationTag
                   key={"operation-" + tag}
+                  myProp={"whatever"}
                   tagObj={tagObj}
                   tag={tag}
                   layoutSelectors={layoutSelectors}
