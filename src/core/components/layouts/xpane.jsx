@@ -14,7 +14,7 @@ export default class XPane extends React.Component {
     let Overview = getComponent("overview", true)
     let Editor = getComponent("editor", true)
     let Footer = getComponent("footer", true)
-    let Header = getComponent("header", true)
+    // let Header = getComponent("header", true)
 
     let Container = getComponent("Container")
     let Row = getComponent("Row")
